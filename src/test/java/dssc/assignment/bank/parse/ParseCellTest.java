@@ -24,4 +24,12 @@ public class ParseCellTest {
                         "  |";
         assertEquals("1", new Cell(zeroAsText).toString());
     }
+    @Test
+    void nineCell() {
+        String nineAsText =
+                        " _ " +
+                        "|_|" +
+                        " _|";
+        assertEquals("9", new Cell(nineAsText).toString());
+    }
 }
