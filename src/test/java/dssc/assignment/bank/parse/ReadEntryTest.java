@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ReadEntryTest {
 
-    @Test
+    /*@Test
     void allZerosEntry() throws Exception {
         URL allZerosSingleEntry = BankOcrAcceptanceTest.class.getClassLoader().getResource("allZerosEntry");
         EntryReader reader = new EntryReader(Path.of(allZerosSingleEntry.toURI()));
@@ -34,5 +34,13 @@ public class ReadEntryTest {
         EntryReader reader = new EntryReader(Path.of(allOnesSingleEntry.toURI()));
         Entry entry = reader.readEntry();
         assertEquals("123456789", entry.toString());
+    }
+*/
+    @Test
+    void correctlyCountLinesOfDigitsOfMultipleEntries() throws Exception {
+        URL allOnesSingleEntry = BankOcrAcceptanceTest.class.getClassLoader().getResource("multipleEntries");
+        EntryReader reader = new EntryReader(Path.of(allOnesSingleEntry.toURI()));
+        Entry entry = reader.readEntry();
+        assertEquals(3, reader.getNumberOfEntries());
     }
 }
