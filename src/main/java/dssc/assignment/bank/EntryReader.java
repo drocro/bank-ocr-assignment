@@ -17,5 +17,7 @@ public class EntryReader {
     public Entry readEntry() {
         return new Entry(fileLines.get(0), fileLines.get(1), fileLines.get(2));
     }
-    public int getNumberOfEntries(){return (numbOfLines+1)/4;}
+    public int getNumberOfEntries(){
+        return (numbOfLines+1)/4;
+    }
 }
