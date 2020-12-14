@@ -12,9 +12,10 @@ public class EntryReader {
     private int entryIndex;
     public EntryReader(Path filePath) throws IOException {
         fileLines = Files.readAllLines(filePath);
+        fileLines.add("");
         numbOfLines = fileLines.size();
     }
-    public boolean isEmpty(){return entryIndex == numbOfLines+4;}
+    public boolean isEmpty(){return entryIndex == numbOfLines;}
     public Entry readEntry() {
         if (!this.isEmpty()) {
             Entry newEntry = new Entry(fileLines.get(entryIndex+0), fileLines.get(entryIndex+1), fileLines.get(entryIndex+2));
@@ -25,6 +26,6 @@ public class EntryReader {
         return new Entry("","","");
     }
     public int getNumberOfEntries(){
-        return (numbOfLines+1)/4;
+        return (numbOfLines)/4;
     }
 }
