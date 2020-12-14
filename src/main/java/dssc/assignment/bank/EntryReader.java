@@ -9,13 +9,20 @@ public class EntryReader {
 
     private final List<String> fileLines;
     private int numbOfLines;
+    private int entryIndex;
     public EntryReader(Path filePath) throws IOException {
         fileLines = Files.readAllLines(filePath);
         numbOfLines = fileLines.size();
     }
-
+    public boolean isEmpty(){return entryIndex == numbOfLines+4;}
     public Entry readEntry() {
-        return new Entry(fileLines.get(0), fileLines.get(1), fileLines.get(2));
+        if (!this.isEmpty()) {
+            Entry newEntry = new Entry(fileLines.get(entryIndex+0), fileLines.get(entryIndex+1), fileLines.get(entryIndex+2));
+            entryIndex += 4;//point to the next entry
+            return newEntry;
+        }
+        ////else return empty entry(BETTER TO THROW AN EXCEPTION?)
+        return new Entry("","","");
     }
     public int getNumberOfEntries(){
         return (numbOfLines+1)/4;
